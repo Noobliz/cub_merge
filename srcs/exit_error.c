@@ -6,7 +6,7 @@
 /*   By: lguiet <lguiet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 13:07:40 by thgaugai          #+#    #+#             */
-/*   Updated: 2025/07/31 10:45:24 by lguiet           ###   ########.fr       */
+/*   Updated: 2025/07/31 13:38:44 by lguiet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	ft_exit(t_data *data)
 		free(data->player);
 	if (data->ray)
 		free(data->ray);
-	free(data);
+	//free(data);
 	exit(EXIT_SUCCESS);
 }
 

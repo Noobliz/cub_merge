@@ -6,11 +6,12 @@
 /*   By: lguiet <lguiet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 12:57:11 by thgaugai          #+#    #+#             */
-/*   Updated: 2025/07/31 10:47:04 by lguiet           ###   ########.fr       */
+/*   Updated: 2025/07/31 13:36:19 by lguiet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+#include "../includes/parsing.h"
 
 t_ray	*ray_init(t_data *data)
 {
@@ -53,8 +54,9 @@ void	window_init(t_data	*data)
 
 static void	player_init(t_data *data)
 {
-	data->player->x = 12.5;
-	data->player->y = 11.5;
+	init_player_pos(data);
+	// data->player->x = //12.5;
+	// data->player->y = //11.5;
 	data->player->dir_x = -1.0;
 	data->player->dir_y = 0.0;
 	data->player->plane_x = 0.0;
@@ -64,6 +66,8 @@ static void	player_init(t_data *data)
 
 t_data	*data_init(char **map, t_data *data)
 {
+	print_map(data->map);
+	(void)map;
 	data->player = malloc(sizeof(t_player));
 	if (!data->player)
 		error("Error: Memory allocation failed!", data);
@@ -78,24 +82,24 @@ t_data	*data_init(char **map, t_data *data)
 	data->frame_count = 0;
 	data->draw_end = 0;
 	data->draw_start = 0;
-	data->map = map;
+	//data->map = map;
 	data->img = NULL;
 	data->win = NULL;
 	data->mlx = NULL;
 	data->ray = NULL;
-	data->no = NULL;
-	data->so = NULL;
-	data->ea = NULL;
-	data->we = NULL;
+	// data->no = NULL;
+	// data->so = NULL;
+	// data->ea = NULL;
+	// data->we = NULL;
 	window_init(data);
 	return (data);
 }
 
-void	game_engine(char **map)
+void	game_engine(char **map, t_data *data)
 {
-	t_data	*data;
+	// t_data	*data;
 
-	data = malloc(sizeof(t_data));
+	// data = malloc(sizeof(t_data));
 	data_init(map, data);
 	load_sprites(data);
 	mlx_hook(data->win, 2, 1L << 0, ft_keypress, data);

@@ -6,7 +6,7 @@
 /*   By: lguiet <lguiet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 12:56:22 by thgaugai          #+#    #+#             */
-/*   Updated: 2025/07/31 13:19:49 by lguiet           ###   ########.fr       */
+/*   Updated: 2025/07/31 13:36:43 by lguiet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	init_player_pos(t_data *data)
 		{
 			if (is_player(data->map[i][j]))
 			{
-				data->player->x = j + 0.5; //* IMG_WIDTH + IMG_WIDTH/ 2;
-				data->player->y = i + 0.5; //* IMG_WIDTH + IMG_WIDTH / 2;
+				data->player->x = j; //* IMG_WIDTH + IMG_WIDTH/ 2;
+				data->player->y = i; //* IMG_WIDTH + IMG_WIDTH / 2;
 				if (data->map[i][j] == 'N')
 					data->orientation = 'N'; //3 * data->pi / 2;
 				else if (data->map[i][j] == 'S')
@@ -157,9 +157,9 @@ int	main(int ac, char **av)
 	data.map = NULL;
     if (!guardian(&data, &param, ac, av))
         return (1);
-    init_player_pos(&data);
+    //init_player_pos(&data);
     print_map(data.map);
-	game_engine(data.map);
+	game_engine(data.map, &data);
 	free_map(data.map);
     free_param(data.param);
 	return (0);

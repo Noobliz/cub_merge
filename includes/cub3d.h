@@ -6,7 +6,7 @@
 /*   By: lguiet <lguiet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 12:47:20 by thgaugai          #+#    #+#             */
-/*   Updated: 2025/07/31 13:16:56 by lguiet           ###   ########.fr       */
+/*   Updated: 2025/07/31 13:37:15 by lguiet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ void				ft_free_map(char **map);
 void				ft_exit(t_data *data);
 int					close_window(t_data *data);
 int					ft_keypress(int keycode, t_data *data);
-void				game_engine(char **map);
+void				game_engine(char **map, t_data *data);
 void				draw_vertical_line(t_player *player,
 						t_data *data, t_ray *ray, int x);
 int					render(t_data *data);
@@ -134,4 +134,6 @@ int					create_color(int r, int g, int b);
 void				wall_heigth(t_ray *ray, t_data *data);
 void				rotate_right(t_player *player);
 void				rotate_left(t_player *player);
+
+void				init_player_pos(t_data *data);
 #endif
