@@ -6,7 +6,7 @@
 /*   By: lguiet <lguiet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 12:47:20 by thgaugai          #+#    #+#             */
-/*   Updated: 2025/07/31 11:02:51 by lguiet           ###   ########.fr       */
+/*   Updated: 2025/07/31 13:00:25 by lguiet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,10 @@ typedef struct s_data
 	clock_t			last_fps_time;
 	int				fps;
 	struct s_param	*param;
+	int            pos_x;
+    int            pos_y;
+    char        orientation;
+	double		pi;
 
 }					t_data;
 

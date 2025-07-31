@@ -6,7 +6,7 @@
 /*   By: lguiet <lguiet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 12:56:22 by thgaugai          #+#    #+#             */
-/*   Updated: 2025/07/31 11:22:22 by lguiet           ###   ########.fr       */
+/*   Updated: 2025/07/31 13:04:50 by lguiet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,39 @@ void    init_textures(t_data *data, t_param param)
     data->no = param.no_path;
     data->so = param.so_path;
     data->we = param.we_path;
+}
+
+void	init_player_pos(t_data *data)
+{
+    data->pi = 3.1415;
+	int i;
+    int j;
+
+    i = 0;
+	while (data->map[i])
+	{
+		j = 0;
+		while (data->map[i][j])
+		{
+			if (is_player(data->map[i][j]))
+			{
+				data->pos_x = j; //* IMG_WIDTH + IMG_WIDTH/ 2;
+				data->pos_y = i; //* IMG_WIDTH + IMG_WIDTH / 2;
+				if (data->map[i][j] == 'N')
+					data->orientation = 3 * data->pi / 2;
+				else if (data->map[i][j] == 'S')
+					data->orientation = data->pi / 2;
+				else if (data->map[i][j] == 'E')
+					data->orientation = 0;
+				else if (data->map[i][j] == 'W')
+					data->orientation = data->pi;
+                // data->player->p_delta_x = cos(data->player->p_angle) * data->player->speed;
+                // data->player->p_delta_y = sin(data->player->p_angle) * data->player->speed;
+			}
+			j++;
+		}
+		i++;
+	}
 }
 
 // int	counter_line(char *file)
@@ -124,7 +157,7 @@ int	main(int ac, char **av)
 	data.map = NULL;
     if (!guardian(&data, &param, ac, av))
         return (1);
-
+    init_player_pos(&data);
     print_map(data.map);
 	game_engine(data.map);
 	free_map(data.map);

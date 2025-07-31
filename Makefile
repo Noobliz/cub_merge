@@ -1,6 +1,6 @@
 NAME = cub3d
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I$(INC_DIR) -I$(MLX_PATH) -I$(LIBFT_PATH)/includes -g
+CFLAGS = -Wall -Wextra -Werror -I$(INC_DIR) -I$(MLX_PATH) -I$(LIBFT_PATH)/includes -g #-Wconversion
 LDFLAGS = -L$(MLX_PATH) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lbsd -L$(LIBFT_PATH) -lft
 
 LIBFT_PATH = ./libft
