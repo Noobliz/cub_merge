@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lguiet <lguiet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thomas <thomas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 12:47:20 by thgaugai          #+#    #+#             */
-/*   Updated: 2025/07/31 13:54:00 by lguiet           ###   ########.fr       */
+/*   Updated: 2025/07/31 15:20:27 by thomas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,6 @@
 # define RIGHT_ARR 65363
 
 typedef struct s_param t_param;
-/*
-typedef struct s_data_map
-{
-	char			**map;
-	char			*path_texture1;
-	char			*path_texture2;
-	char			*path_texture3;
-	char			*path_texture4;
-	int				size_x;
-	int				size_y;
-	int				C[3];//couleur du sol (RGB) ex: C[0] = 255, C[1] = 128, C[0] = 0
-	int				F[3];
-	
-}					t_data_map;*/
 
 typedef struct s_player
 {
@@ -124,7 +110,7 @@ void				ft_free_map(char **map);
 void				ft_exit(t_data *data);
 int					close_window(t_data *data);
 int					ft_keypress(int keycode, t_data *data);
-void				game_engine(char **map, t_data *data);
+void				game_engine(t_data *data);
 void				draw_vertical_line(t_player *player,
 						t_data *data, t_ray *ray, int x);
 int					render(t_data *data);

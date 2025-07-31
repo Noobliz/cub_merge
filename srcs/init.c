@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lguiet <lguiet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thomas <thomas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 12:57:11 by thgaugai          #+#    #+#             */
-/*   Updated: 2025/07/31 14:33:56 by lguiet           ###   ########.fr       */
+/*   Updated: 2025/07/31 15:35:07 by thomas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,19 +54,18 @@ void	window_init(t_data	*data)
 
 static void	player_init(t_data *data)
 {
+	data->player->x = 0;
+	data->player->y = 0;
+	data->player->dir_x = 0;
+	data->player->dir_y = 0;
 	init_player_pos(data);
-	// data->player->x = //12.5;
-	// data->player->y = //11.5;
-	data->player->dir_x = -1.0;
-	data->player->dir_y = 0.0;
-	data->player->plane_x = 0.0;
-	data->player->plane_y = 0.66;
+	data->player->x += 0.5;
+	data->player->y += 0.5;
 	data->player->move_speed = 0.1;
 }
 
-t_data	*data_init(char **map, t_data *data)
+t_data	*data_init(t_data *data)
 {
-	(void)map;
 	data->player = malloc(sizeof(t_player));
 	if (!data->player)
 		error("Error: Memory allocation failed!", data);
@@ -81,28 +80,21 @@ t_data	*data_init(char **map, t_data *data)
 	data->frame_count = 0;
 	data->draw_end = 0;
 	data->draw_start = 0;
-	//data->map = map;
 	data->img = NULL;
 	data->win = NULL;
 	data->mlx = NULL;
 	data->ray = NULL;
-	// data->no = NULL;
-	// data->so = NULL;
-	// data->ea = NULL;
-	// data->we = NULL;
 	window_init(data);
 	return (data);
 }
 
-void	game_engine(char **map, t_data *data)
+void	game_engine(t_data *data)
 {
-	// t_data	*data;
-
-	// data = malloc(sizeof(t_data));
-	data_init(map, data);
+	data_init(data);
 	load_sprites(data);
 	mlx_hook(data->win, 2, 1L << 0, ft_keypress, data);
 	mlx_loop_hook(data->mlx, render, data);
 	mlx_hook(data->win, 17, 0, close_window, data);
 	mlx_loop(data->mlx);
 }
+

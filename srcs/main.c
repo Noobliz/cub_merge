@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lguiet <lguiet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thomas <thomas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 12:56:22 by thgaugai          #+#    #+#             */
-/*   Updated: 2025/07/31 14:29:56 by lguiet           ###   ########.fr       */
+/*   Updated: 2025/07/31 15:34:48 by thomas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,36 @@ void	init_player_pos(t_data *data)
 		{
 			if (is_player(data->map[i][j]))
 			{
-				data->player->x = j; //* IMG_WIDTH + IMG_WIDTH/ 2;
-				data->player->y = i; //* IMG_WIDTH + IMG_WIDTH / 2;
+				data->player->x = j;
+				data->player->y = i;
 				if (data->map[i][j] == 'N')
-					data->orientation = 'N'; //3 * data->pi / 2;
+				{
+					data->player->dir_x = 0.0;
+					data->player->dir_y = -1.0;
+					data->player->plane_x = -0.66;
+					data->player->plane_y = 0.0;
+				}
 				else if (data->map[i][j] == 'S')
-					data->orientation = 'S';//data->pi / 2;
+				{
+					data->player->dir_x = 0.0;
+					data->player->dir_y = 1.0;
+					data->player->plane_x = 0.66;
+					data->player->plane_y = 0.0;
+				}
 				else if (data->map[i][j] == 'E')
-					data->orientation = 'E';//0;
+				{
+					data->player->dir_x = 1.0;
+					data->player->dir_y = 0.0;
+					data->player->plane_x = 0.0;
+					data->player->plane_y = -0.66;
+				}
 				else if (data->map[i][j] == 'W')
-					data->orientation = 'W';//data->pi;
-                // data->player->p_delta_x = cos(data->player->p_angle) * data->player->speed;
-                // data->player->p_delta_y = sin(data->player->p_angle) * data->player->speed;
+				{
+					data->player->dir_x = -1.0;
+					data->player->dir_y = 0.0;
+					data->player->plane_x = 0.0;
+					data->player->plane_y = 0.66;
+				}
 			}
 			j++;
 		}
@@ -53,71 +71,7 @@ void	init_player_pos(t_data *data)
 	}
 }
 
-// int	counter_line(char *file)
-// {
-// 	int		fd;
-// 	char	*line;
-// 	int		counter;
 
-// 	counter = 0;
-// 	fd = open(file, O_RDONLY);
-// 	if (fd < 0)
-// 	{
-// 		printf("Error: File descriptor is invalid!");
-// 		exit(EXIT_FAILURE);
-// 	}
-// 	line = get_next_line(fd);
-// 	while (line != NULL)
-// 	{
-// 		counter++;
-// 		free(line);
-// 		line = NULL;
-// 		line = get_next_line(fd);
-// 	}
-// 	close(fd);
-// 	return (counter);
-// }
-
-// char	**map_init(char *file)
-// {
-// 	char	**map;
-// 	char	*line;
-// 	int		i;
-// 	int		fd;
-// 	int		count;
-
-// 	count = counter_line(file);
-// 	i = 0;
-// 	fd = open(file, O_RDONLY);
-// 	if (fd < 0)
-// 	{
-// 		ft_printf("Error: Cannot open file!\n");
-// 		exit(EXIT_FAILURE);
-// 	}
-// 	map = malloc(sizeof(char *) * (count + 1));
-// 	if (!map)
-// 	{
-// 		ft_printf("Error: Memomy allocation failed!\n");
-// 		exit(EXIT_FAILURE);
-// 	}
-// 	line = get_next_line(fd);
-// 	while (line != NULL)
-// 	{
-// 		map[i] = ft_strdup(line);
-// 		if (!map[i])
-// 		{
-// 			ft_printf("Error: Memomy allocation failed!\n");
-// 			ft_free_map(map);
-// 		}
-// 		free(line);
-// 		line = NULL;
-// 		i++;
-// 		line = get_next_line(fd);
-// 	}
-// 	map[i] = NULL;
-// 	close(fd);
-// 	return (map);
-// }
 
 int guardian(t_data *data, t_param *param, int argc, char **argv)
 {
@@ -149,18 +103,12 @@ int	main(int ac, char **av)
 {
 	t_param     param;
     t_data      data;
-	// char	**map;
-	// (void)ac;
 
-	// map = map_init(av[1]);
-   // t_player    player;
-	
 	data.map = NULL;
     if (!guardian(&data, &param, ac, av))
         return (1);
-    //init_player_pos(&data);
     print_map(data.map);
-	game_engine(data.map, &data);
+	game_engine(&data);
 	free_map(data.map);
     free_param(data.param);
 	return (0);
