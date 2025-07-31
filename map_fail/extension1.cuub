@@ -1,0 +1,21 @@
+ SO      ./textures/xpm/south_rock.xpm
+EA         ./textures/xpm/east_rock.xpm
+NO  ./textures/xpm/north_rock.xpm
+C             80,170,230
+
+   WE   ./textures/xpm/west_rock.xpm
+
+
+         F 170,100,30
+
+1111
+1001111111111
+1100000000001
+1000000000001
+10001111110011
+10001000010001
+10E01000010001
+10001000000001
+10001111110011
+1000001111111
+1111111

@@ -1,0 +1,19 @@
+SO      ./textures/walls/south_rock.texture
+EA ./textures/walls/east_rock.texture
+EA ./textures/walls/east_rock.texture
+
+NO  ./textures/walls/north_rock.texture
+
+   WE   ./textures/walls/west_rock.texture
+
+
+C             255,255,250
+F             21,32,11
+
+1111111
+1000001
+1000001
+100N001
+1000001
+1000001
+1111111

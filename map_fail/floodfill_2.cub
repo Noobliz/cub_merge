@@ -1,0 +1,16 @@
+ SO      ./textures/xpm/south_rock.xpm
+EA         ./textures/xpm/east_rock.xpm
+
+NO  ./textures/xpm/north_rock.xpm
+
+   WE   ./textures/xpm/west_rock.xpm
+C             80,170,230
+
+
+
+
+         F 170,100,30
+
+111
+1000W1
+111

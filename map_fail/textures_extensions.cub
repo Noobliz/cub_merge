@@ -1,0 +1,19 @@
+SO      ./textures/bad_textures/south_rock.texture
+EA ./textures/bad_textures/east_rock.texture
+
+NO  ./textures/bad_textures/north_rock.texture
+
+   WE   ./textures/bad_textures/west_rock.texture
+
+
+
+C             255,255,200
+F             21,32,11
+
+1111111
+1000001
+1000001
+100N001
+1000001
+1000001
+1111111

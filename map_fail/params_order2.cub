@@ -1,0 +1,15 @@
+1111111
+1000001
+1000001
+10E0101
+1000001
+1000001
+1111111
+
+SO  ./textures/test_diff/south.xpm
+EA  ./textures/test_diff/east.xpm
+NO  ./textures/test_diff/north.xpm
+WE  ./textures/test_diff/west.xpm
+
+C 80,170,230
+F 170,100,30
