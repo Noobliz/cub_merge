@@ -6,7 +6,7 @@
 /*   By: lguiet <lguiet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 12:57:11 by thgaugai          #+#    #+#             */
-/*   Updated: 2025/07/31 13:36:19 by lguiet           ###   ########.fr       */
+/*   Updated: 2025/07/31 14:33:56 by lguiet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ static void	player_init(t_data *data)
 
 t_data	*data_init(char **map, t_data *data)
 {
-	print_map(data->map);
 	(void)map;
 	data->player = malloc(sizeof(t_player));
 	if (!data->player)

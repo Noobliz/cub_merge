@@ -6,7 +6,7 @@
 /*   By: lguiet <lguiet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 17:08:50 by thomas            #+#    #+#             */
-/*   Updated: 2025/07/31 10:45:53 by lguiet           ###   ########.fr       */
+/*   Updated: 2025/07/31 13:55:21 by lguiet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,18 @@ void	load_sprites(t_data *data)
 	int	w;
 
 	w = IMG_WIDTH;
-	data->ea = mlx_xpm_file_to_image(data->mlx, "textures/wood.xpm", &w, &w);
-	data->we = mlx_xpm_file_to_image(data->mlx, "textures/wood.xpm", &w, &w);
-	data->so = mlx_xpm_file_to_image(data->mlx, "textures/wood.xpm", &w, &w);
-	data->no = mlx_xpm_file_to_image(data->mlx, "textures/wood.xpm", &w, &w);
+	data->ea = mlx_xpm_file_to_image(data->mlx, data->path_ea, &w, &w);
+	data->we = mlx_xpm_file_to_image(data->mlx, data->path_we, &w, &w);
+	data->so = mlx_xpm_file_to_image(data->mlx, data->path_so, &w, &w);
+	data->no = mlx_xpm_file_to_image(data->mlx, data->path_no, &w, &w);
 	if (!data->ea || !data->we || !data->so || !data->no)
 		error("Error: Image loading failed!", data);
-	data->f[0] = 64;
-	data->f[1] = 64;
-	data->f[2] = 64;
-	data->c[0] = 135;
-	data->c[1] = 205;
-	data->c[2] = 235;
+	// data->f[0] = 64;
+	// data->f[1] = 64;
+	// data->f[2] = 64;
+	// data->c[0] = 135;
+	// data->c[1] = 205;
+	// data->c[2] = 235;
 	data->sprites_load = 1;
 }
 

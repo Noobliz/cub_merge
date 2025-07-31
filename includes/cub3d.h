@@ -6,7 +6,7 @@
 /*   By: lguiet <lguiet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 12:47:20 by thgaugai          #+#    #+#             */
-/*   Updated: 2025/07/31 13:37:15 by lguiet           ###   ########.fr       */
+/*   Updated: 2025/07/31 13:54:00 by lguiet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,10 @@ typedef struct s_data
 {
 	t_player		*player;
 	t_ray			*ray;
+	char			*path_ea;
+	char			*path_we;
+	char			*path_so;
+	char			*path_no;
 	void			*mlx;
 	void			*win;
 	void			*img;

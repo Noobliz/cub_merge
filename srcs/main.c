@@ -6,7 +6,7 @@
 /*   By: lguiet <lguiet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 12:56:22 by thgaugai          #+#    #+#             */
-/*   Updated: 2025/07/31 13:36:43 by lguiet           ###   ########.fr       */
+/*   Updated: 2025/07/31 14:29:56 by lguiet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,14 @@
 
 void    init_textures(t_data *data, t_param param)
 {
-    data->ea = param.ea_path;
-    data->no = param.no_path;
-    data->so = param.so_path;
-    data->we = param.we_path;
+    data->path_ea = param.ea_path;
+    data->path_no = param.no_path;
+    data->path_so = param.so_path;
+    data->path_we = param.we_path;
 }
 
 void	init_player_pos(t_data *data)
 {
-    data->pi = 3.1415;
 	int i;
     int j;
 
@@ -129,6 +128,7 @@ int guardian(t_data *data, t_param *param, int argc, char **argv)
         write(2, "Error\nenter an infile .cub\n", 28);
         return (0);
     }
+    data->param = param;
     map_is_valid(&map_rect, argv[1], param);
     if (!map_rect)
         return (0);
@@ -147,12 +147,13 @@ int guardian(t_data *data, t_param *param, int argc, char **argv)
 
 int	main(int ac, char **av)
 {
+	t_param     param;
+    t_data      data;
 	// char	**map;
 	// (void)ac;
 
 	// map = map_init(av[1]);
-	t_param param;
-    t_data data;
+   // t_player    player;
 	
 	data.map = NULL;
     if (!guardian(&data, &param, ac, av))

@@ -6,11 +6,12 @@
 /*   By: lguiet <lguiet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 13:07:40 by thgaugai          #+#    #+#             */
-/*   Updated: 2025/07/31 13:38:44 by lguiet           ###   ########.fr       */
+/*   Updated: 2025/07/31 14:08:58 by lguiet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+#include "../includes/parsing.h"
 
 void	error(char *mess, t_data *data)
 {
@@ -63,6 +64,8 @@ void	ft_exit(t_data *data)
 		free(data->player);
 	if (data->ray)
 		free(data->ray);
+	if (data->param)
+		free_param(data->param);
 	//free(data);
 	exit(EXIT_SUCCESS);
 }
