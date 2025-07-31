@@ -6,7 +6,7 @@
 /*   By: lguiet <lguiet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 12:56:22 by thgaugai          #+#    #+#             */
-/*   Updated: 2025/07/31 13:04:50 by lguiet           ###   ########.fr       */
+/*   Updated: 2025/07/31 13:19:49 by lguiet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,16 @@ void	init_player_pos(t_data *data)
 		{
 			if (is_player(data->map[i][j]))
 			{
-				data->pos_x = j; //* IMG_WIDTH + IMG_WIDTH/ 2;
-				data->pos_y = i; //* IMG_WIDTH + IMG_WIDTH / 2;
+				data->player->x = j + 0.5; //* IMG_WIDTH + IMG_WIDTH/ 2;
+				data->player->y = i + 0.5; //* IMG_WIDTH + IMG_WIDTH / 2;
 				if (data->map[i][j] == 'N')
-					data->orientation = 3 * data->pi / 2;
+					data->orientation = 'N'; //3 * data->pi / 2;
 				else if (data->map[i][j] == 'S')
-					data->orientation = data->pi / 2;
+					data->orientation = 'S';//data->pi / 2;
 				else if (data->map[i][j] == 'E')
-					data->orientation = 0;
+					data->orientation = 'E';//0;
 				else if (data->map[i][j] == 'W')
-					data->orientation = data->pi;
+					data->orientation = 'W';//data->pi;
                 // data->player->p_delta_x = cos(data->player->p_angle) * data->player->speed;
                 // data->player->p_delta_y = sin(data->player->p_angle) * data->player->speed;
 			}
