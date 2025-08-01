@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.c                                              :+:      :+:    :+:   */
+/*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lguiet <lguiet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thomas <thomas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 10:46:57 by thgaugai          #+#    #+#             */
-/*   Updated: 2025/07/31 13:12:29 by lguiet           ###   ########.fr       */
+/*   Updated: 2025/08/01 18:16:25 by thomas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 static void	ray_direction(t_data *data, t_player *player, t_ray *ray, int x)
 {
@@ -19,8 +19,14 @@ static void	ray_direction(t_data *data, t_player *player, t_ray *ray, int x)
 	camera_x = 2 * x / (double)data->size_x - 1;
 	ray->dir_x = player->dir_x + player->plane_x * camera_x;
 	ray->dir_y = player->dir_y + player->plane_y * camera_x;
-	ray->delta_dist_x = (ray->dir_x == 0) ? 1e30 : fabs(1 / ray->dir_x); //!norm
-	ray->delta_dist_y = (ray->dir_y == 0) ? 1e30 : fabs(1 / ray->dir_y);
+	if (ray->dir_x == 0)
+		ray->delta_dist_x = 1e30;
+	else
+		ray->delta_dist_x = fabs(1 / ray->dir_x);
+	if (ray->dir_y == 0)
+		ray->delta_dist_y = 1e30;
+	else
+		ray->delta_dist_y = fabs(1 / ray->dir_y);
 }
 
 static void	ray_distance(t_ray	*ray, t_player *player, int *map_x, int *map_y)

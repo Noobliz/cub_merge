@@ -6,25 +6,24 @@ LDFLAGS = -L$(MLX_PATH) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lbsd -L$(LIBFT_
 LIBFT_PATH = ./libft
 MLX_PATH = ./minilibx-linux
 SRC_DIR = ./srcs
-GNL_DIR = ./gnl
 PARSING_DIR = ./parsing
 INC_DIR = ./includes
 
 OBJDIR = .build
 OBJ_SRC_DIR = $(OBJDIR)/srcs
-OBJ_GNL_DIR = $(OBJDIR)/gnl
 OBJ_PARSING_DIR = $(OBJDIR)/parsing
 
-MAIN_SRCS = $(SRC_DIR)/main.c \
-			$(SRC_DIR)/exit_error.c \
-			$(SRC_DIR)/draw.c \
-			$(SRC_DIR)/init.c \
-			$(SRC_DIR)/movements.c \
-			$(SRC_DIR)/ray.c \
-			$(SRC_DIR)/render.c \
-			$(SRC_DIR)/textures.c \
-			$(SRC_DIR)/pov_handler.c \
-			$(SRC_DIR)/utils.c\
+MAIN_SRCS = main.c \
+			$(SRC_DIR)/system/cleanup.c \
+			$(SRC_DIR)/core/render.c \
+			$(SRC_DIR)/core/init.c \
+			$(SRC_DIR)/core/init_player.c \
+			$(SRC_DIR)/player/movement.c \
+			$(SRC_DIR)/player/camera.c \
+			$(SRC_DIR)/engine/raycasting.c \
+			$(SRC_DIR)/engine/drawing.c \
+			$(SRC_DIR)/engine/textures.c \
+			$(SRC_DIR)/engine/graphics_utils.c\
 			$(PARSING_DIR)/get_infile/infile_to_tab.c \
 			$(PARSING_DIR)/get_infile/utils_infile.c \
 			$(PARSING_DIR)/map_to_rectangle.c \
@@ -37,18 +36,11 @@ MAIN_SRCS = $(SRC_DIR)/main.c \
 			$(PARSING_DIR)/check_params/check_textures.c \
 			$(PARSING_DIR)/get_params/params_utils.c \
 
+SRCS = $(MAIN_SRCS)
 
+MAIN_OBJS = $(patsubst %.c, $(OBJDIR)/%.o, $(MAIN_SRCS))
 
-GNL_SRCS = $(GNL_DIR)/get_next_line.c \
-		   $(GNL_DIR)/get_next_line_utils.c
-
-SRCS = $(MAIN_SRCS) $(GNL_SRCS) $(PARSING_SRCS)
-
-MAIN_OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_SRC_DIR)/%.o, $(MAIN_SRCS))
-GNL_OBJS = $(patsubst $(GNL_DIR)/%.c, $(OBJ_GNL_DIR)/%.o, $(GNL_SRCS))
-PARSING_OBJS = $(patsubst $(PARSING_DIR)/%.c, $(OBJ_PARSING_DIR)/%.o, $(PARSING_SRCS))
-
-OBJS = $(MAIN_OBJS) $(GNL_OBJS) $(PARSING_OBJS)
+OBJS = $(MAIN_OBJS)
 
 LIBFT = $(LIBFT_PATH)/libft.a
 MLX = $(MLX_PATH)/libmlx_Linux.a
@@ -79,20 +71,8 @@ $(MLX):
 	@echo "$(YELLOW)🖼️  Compiling minilibx...$(RESET)"
 	@make -C $(MLX_PATH) --no-print-directory
 
-$(OBJ_SRC_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(OBJ_SRC_DIR)
-	@$(eval COMPILED_FILES=$(shell echo $$(($(COMPILED_FILES)+1))))
-	@echo "$(BLUE)[$(COMPILED_FILES)/$(TOTAL_FILES)] 🔨 Compiling $< → $@$(RESET)"
-	@$(CC) $(CFLAGS) -c $< -o $@
-
-$(OBJ_GNL_DIR)/%.o: $(GNL_DIR)/%.c
-	@mkdir -p $(OBJ_GNL_DIR)
-	@$(eval COMPILED_FILES=$(shell echo $$(($(COMPILED_FILES)+1))))
-	@echo "$(BLUE)[$(COMPILED_FILES)/$(TOTAL_FILES)] 🔨 Compiling $< → $@$(RESET)"
-	@$(CC) $(CFLAGS) -c $< -o $@
-
-$(OBJ_PARSING_DIR)/%.o: $(PARSING_DIR)/%.c
-	@mkdir -p $(OBJ_PARSING_DIR)
+$(OBJDIR)/%.o: %.c
+	@mkdir -p $(dir $@)
 	@$(eval COMPILED_FILES=$(shell echo $$(($(COMPILED_FILES)+1))))
 	@echo "$(BLUE)[$(COMPILED_FILES)/$(TOTAL_FILES)] 🔨 Compiling $< → $@$(RESET)"
 	@$(CC) $(CFLAGS) -c $< -o $@

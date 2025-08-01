@@ -6,17 +6,16 @@
 /*   By: thomas <thomas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 12:47:20 by thgaugai          #+#    #+#             */
-/*   Updated: 2025/07/31 15:20:27 by thomas           ###   ########.fr       */
+/*   Updated: 2025/08/01 18:38:23 by thomas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-
-# include "../gnl/get_next_line.h"
 # include "../minilibx-linux/mlx.h"
 # include "../libft/libft.h"
+# include "../includes/parsing.h"
 # include "X11/X.h"
 # include "X11/Xlib.h"
 # include <stdio.h>
@@ -124,6 +123,8 @@ int					create_color(int r, int g, int b);
 void				wall_heigth(t_ray *ray, t_data *data);
 void				rotate_right(t_player *player);
 void				rotate_left(t_player *player);
-
+void    			init_textures(t_data *data, t_param param);
 void				init_player_pos(t_data *data);
+void				player_init(t_data *data);
+t_data				*data_init(t_data *data);
 #endif

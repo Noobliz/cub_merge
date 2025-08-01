@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lguiet <lguiet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thomas <thomas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 11:26:23 by lguiet            #+#    #+#             */
-/*   Updated: 2025/07/31 11:02:49 by lguiet           ###   ########.fr       */
+/*   Updated: 2025/08/01 18:28:55 by thomas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ typedef struct s_mlx_win
 //----[GET_PARAMS/extract_params]-----
 int     check_param(char **infile, t_param *param, int map_index);
 int     is_color(char *color_str, int color_int[3]);
-int     check_all_textures(t_data *data);
+int     check_all_textures(struct s_data *data);
 //-----get_params/params_utils---
 void    print_param(t_param param);
 void    init_params_flags(t_param *param);
@@ -114,7 +114,5 @@ int     get_height(char **map);
 //int	    ft_strcmp(const char *s1, const char *s2);
 char    *skip_spaces(char *line);
 
-
-
-# endif
+#endif
 #endif

@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lguiet <lguiet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thomas <thomas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 17:08:50 by thomas            #+#    #+#             */
-/*   Updated: 2025/07/31 13:55:21 by lguiet           ###   ########.fr       */
+/*   Updated: 2025/08/01 18:16:29 by thomas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
+
+void    init_textures(t_data *data, t_param param)
+{
+    data->path_ea = param.ea_path;
+    data->path_no = param.no_path;
+    data->path_so = param.so_path;
+    data->path_we = param.we_path;
+}
 
 void	load_sprites(t_data *data)
 {
@@ -23,12 +31,6 @@ void	load_sprites(t_data *data)
 	data->no = mlx_xpm_file_to_image(data->mlx, data->path_no, &w, &w);
 	if (!data->ea || !data->we || !data->so || !data->no)
 		error("Error: Image loading failed!", data);
-	// data->f[0] = 64;
-	// data->f[1] = 64;
-	// data->f[2] = 64;
-	// data->c[0] = 135;
-	// data->c[1] = 205;
-	// data->c[2] = 235;
 	data->sprites_load = 1;
 }
 

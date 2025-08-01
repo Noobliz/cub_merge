@@ -6,12 +6,11 @@
 /*   By: thomas <thomas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 12:57:11 by thgaugai          #+#    #+#             */
-/*   Updated: 2025/07/31 15:35:07 by thomas           ###   ########.fr       */
+/*   Updated: 2025/08/01 18:38:09 by thomas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
-#include "../includes/parsing.h"
+#include "../../includes/cub3d.h"
 
 t_ray	*ray_init(t_data *data)
 {
@@ -52,18 +51,6 @@ void	window_init(t_data	*data)
 	data->ray = ray_init(data);
 }
 
-static void	player_init(t_data *data)
-{
-	data->player->x = 0;
-	data->player->y = 0;
-	data->player->dir_x = 0;
-	data->player->dir_y = 0;
-	init_player_pos(data);
-	data->player->x += 0.5;
-	data->player->y += 0.5;
-	data->player->move_speed = 0.1;
-}
-
 t_data	*data_init(t_data *data)
 {
 	data->player = malloc(sizeof(t_player));
@@ -86,15 +73,5 @@ t_data	*data_init(t_data *data)
 	data->ray = NULL;
 	window_init(data);
 	return (data);
-}
-
-void	game_engine(t_data *data)
-{
-	data_init(data);
-	load_sprites(data);
-	mlx_hook(data->win, 2, 1L << 0, ft_keypress, data);
-	mlx_loop_hook(data->mlx, render, data);
-	mlx_hook(data->win, 17, 0, close_window, data);
-	mlx_loop(data->mlx);
 }
 
