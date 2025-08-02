@@ -58,7 +58,7 @@ char	**add_line(char **map, char *line, int *count)
 	return (new_map);
 }
 
-void	copy_content(char *line, int fd, t_param *param, char ***map)
+int	copy_content(char *line, int fd, t_param *param, char ***map)
 {
 	int	count;
 	int	map_found;
@@ -73,6 +73,7 @@ void	copy_content(char *line, int fd, t_param *param, char ***map)
 		{
 			if (line[0] == '\n' || line[0] == '\0' || line[0] == '\t')
 			{
+				map_found = 42;
 				free(line);
 				line = NULL;
 				break ;
@@ -83,6 +84,7 @@ void	copy_content(char *line, int fd, t_param *param, char ***map)
 			*map = add_line(*map, line, &count);
 		line = get_next_line(fd);
 	}
+	return (map_found);
 }
 
 //skip the textures lines and then copy into a **tab
@@ -97,7 +99,13 @@ char	**get_infile(char *filename, t_param *param)
 	map = NULL;
 	if (!open_fd(filename, &fd))
 		return (0);
-	copy_content(line, fd, param, &map);
+	if (copy_content(line, fd, param, &map) == 42)
+	{
+		write(2, "Error\nmap description must be last\n", 36);
+		free_line_close_fd(line, &fd);
+		free_map(map);
+		return (NULL);
+	}
 	free_line_close_fd(line, &fd);
 	if (!map)
 		write(2, "Error\ninfile is empty\n", 23);
