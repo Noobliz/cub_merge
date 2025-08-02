@@ -6,18 +6,18 @@
 /*   By: thomas <thomas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 17:08:50 by thomas            #+#    #+#             */
-/*   Updated: 2025/08/01 18:16:29 by thomas           ###   ########.fr       */
+/*   Updated: 2025/08/02 12:01:31 by thomas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void    init_textures(t_data *data, t_param param)
+void	init_textures(t_data *data, t_param param)
 {
-    data->path_ea = param.ea_path;
-    data->path_no = param.no_path;
-    data->path_so = param.so_path;
-    data->path_we = param.we_path;
+	data->path_ea = param.ea_path;
+	data->path_no = param.no_path;
+	data->path_so = param.so_path;
+	data->path_we = param.we_path;
 }
 
 void	load_sprites(t_data *data)

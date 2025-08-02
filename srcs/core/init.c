@@ -6,7 +6,7 @@
 /*   By: thomas <thomas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 12:57:11 by thgaugai          #+#    #+#             */
-/*   Updated: 2025/08/01 18:38:09 by thomas           ###   ########.fr       */
+/*   Updated: 2025/08/02 11:59:58 by thomas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,3 @@ t_data	*data_init(t_data *data)
 	window_init(data);
 	return (data);
 }
-

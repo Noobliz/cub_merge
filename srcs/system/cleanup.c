@@ -6,7 +6,7 @@
 /*   By: thomas <thomas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 13:07:40 by thgaugai          #+#    #+#             */
-/*   Updated: 2025/08/01 18:24:49 by thomas           ###   ########.fr       */
+/*   Updated: 2025/08/02 12:02:11 by thomas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ void	ft_exit(t_data *data)
 		free(data->ray);
 	if (data->param)
 		free_param(data->param);
-	//free(data);
 	exit(EXIT_SUCCESS);
 }
 

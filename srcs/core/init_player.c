@@ -6,7 +6,7 @@
 /*   By: thomas <thomas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 18:08:40 by thomas            #+#    #+#             */
-/*   Updated: 2025/08/01 18:46:45 by thomas           ###   ########.fr       */
+/*   Updated: 2025/08/02 12:00:50 by thomas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ static void	finish_init(t_data *data, int i, int j)
 
 static void	set_player_pos(t_data *data)
 {
-	int i;
-    int j;
+	int	i;
+	int	j;
 
-    i = -1;
+	i = -1;
 	while (data->map[++i])
 	{
 		j = 0;
