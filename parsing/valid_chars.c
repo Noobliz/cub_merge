@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   valid_chars.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lguiet <lguiet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: thgaugai <thgaugai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 11:23:37 by lguiet            #+#    #+#             */
-/*   Updated: 2025/07/31 11:05:42 by lguiet           ###   ########.fr       */
+/*   Updated: 2025/08/03 16:00:20 by thgaugai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/parsing.h"
-
 
 int	has_holes(char **map, int i, int j)
 {
